@@ -1,10 +1,19 @@
 "use strict";
 
-const pr3 = new Promise((resolve, reject) => {
-    throw new Error('Rejected by throwing an Error!');
+const pr4 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Ironhack"), 2000);
 });
 
 
-pr3
-  .then((value) => console.log('Resolved with:', value))
-  .catch((err) => console.log('catch() ->', err));
+pr4
+  .then(() => {
+    console.log("1. then()");
+  })
+  .then(() => {
+    console.log("2. then()");
+    throw new Error("Something went wrong");     // <= Throw an Error
+  })
+  .then(() => {                                  // <= This block is skipped
+    console.log("3. then()");
+  })
+  .catch((err) => console.log("catch() ->", err));
