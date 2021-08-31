@@ -1,15 +1,17 @@
 "use strict";
 
-const pr9 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("Ironhack"), 2000);
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("foo"), 1000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve(1337), 2000);
+});
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve( { name: "Bob" } ), 4000);
 });
 
 
-pr9
-  .then(() => console.log("1. then()") )
-  .then(() => Promise.reject("Oops!") )       // <= Reject a Promise
-  .then(() => console.log("3. then()") )       // <= This block is skipped
-  .catch((err) => {
-    console.log("catch()", err) 
-  })
-  .finally(() => console.log("finally()"));
+Promise.all( [p1, p2, p3] )
+  .then((values) => console.log("values", values));
