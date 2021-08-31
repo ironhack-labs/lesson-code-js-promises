@@ -1,19 +1,23 @@
 "use strict";
 
-const pr4 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("Ironhack"), 2000);
+const pr5 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("A"), 2000);
 });
 
 
-pr4
-  .then(() => {
-    console.log("1. then()");
+pr5
+  .then((value1) => {
+    console.log("value1:", value1);
+    return "B";
   })
-  .then(() => {
-    console.log("2. then()");
-    throw new Error("Something went wrong");     // <= Throw an Error
+  .then((value2) => {
+    console.log("value2:", value2);
+    return "C";
   })
-  .then(() => {                                  // <= This block is skipped
-    console.log("3. then()");
+  .then((value3) => {
+    console.log("value3:", value3);
+    return "D";
   })
-  .catch((err) => console.log("catch() ->", err));
+  .then((value4) => {
+    console.log("value4:", value4);
+  });
