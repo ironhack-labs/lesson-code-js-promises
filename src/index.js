@@ -1,23 +1,23 @@
 "use strict";
 
-const pr6 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("A"), 2000);
+const pr7 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('A'), 2000);
 });
 
 
-pr6
+pr7
   .then((value1) => {
-    console.log("value1:", value1);
-    return new Promise((resolve, reject) => setTimeout(() => resolve("B"), 2000));
+    console.log("1. then()", value1);  
+    throw new Error("FIRST ERROR");
+  })
+  .catch((err) => {
+    console.error("1. catch()", err);
+    return "Hello from catch";
   })
   .then((value2) => {
-    console.log("value2:", value2);
-    return new Promise((resolve, reject) => setTimeout(() => resolve("C"), 2000));
+    console.log("2. then()", value2);
+    throw new Error("SECOND ERROR");
   })
-  .then((value3) => {
-    console.log("value3:", value3);
-    return new Promise((resolve, reject) => setTimeout(() => resolve("D"), 2000));
-  })
-  .then((value4) => {
-    console.log("value4:", value4);
+  .catch((err) => {
+    console.error("2. catch()", err);
   });
