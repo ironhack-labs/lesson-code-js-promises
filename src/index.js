@@ -1,10 +1,11 @@
 "use strict";
 
-const myPromise = new Promise(function (resolve, reject) {
-   if (true) {  /* condition */
-      resolve(/* value */);  // fulfilled successfully
-   }
-   else {
-      reject(/* reason */);  // error, rejected
-   }
-});
+const promisePending = new Promise(function (resolve, reject) {});
+
+const promiseResolved = Promise.resolve(42);
+
+const promiseRejected = Promise.reject('We rejected it');
+
+console.log(promisePending);
+console.log(promiseResolved);
+console.log(promiseRejected);
