@@ -1,11 +1,11 @@
 "use strict";
 
-const promisePending = new Promise(function (resolve, reject) {});
+const pr1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Ironhack');
+  }, 2000);
+});
 
-const promiseResolved = Promise.resolve(42);
 
-const promiseRejected = Promise.reject('We rejected it');
-
-console.log(promisePending);
-console.log(promiseResolved);
-console.log(promiseRejected);
+pr1
+  .then((val) => console.log('Resolved with:', val));
