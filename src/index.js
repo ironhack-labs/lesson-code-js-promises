@@ -1,11 +1,12 @@
 "use strict";
 
-const pr1 = new Promise((resolve, reject) => {
+const pr2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Ironhack');
+      reject('Rejected!'); // <== This value will be passed to catch()
   }, 2000);
 });
 
 
-pr1
-  .then((val) => console.log('Resolved with:', val));
+pr2
+  .then((value) => console.log('Resolved with:', val))
+  .catch((err) => console.log('catch() ->', err));
