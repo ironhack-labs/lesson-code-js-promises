@@ -20,7 +20,7 @@ function getDirections(step, callback, errorCallback) {
 
 // Single callback
 // getDirections(0, ()=> {
-//   getDirections(1);
+//   getDirections(1, () => {});
 // });
 
 
